@@ -102,16 +102,6 @@ class ExportacionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Exportacion $exportacion): Response
-    {
-        return Inertia::render('exportaciones/Show', [
-            'exportacion' => $exportacion,
-        ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id): Response
@@ -146,7 +136,7 @@ class ExportacionController extends Controller
 
         return DB::transaction(function () use ($validated, $request, $exportacion) {
             $estadoOriginal = $exportacion->estado;
-            
+
             // 1. Actualizar los campos principales
             $exportacion->update($validated);
 
